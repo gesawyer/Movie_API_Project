@@ -152,7 +152,7 @@ namespace MovieAPI.Models
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Favorites)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Favorites__UserI__4BAC3F29");
+                    .HasConstraintName("FK__Favorites__UserI__160F4887");
             });
 
             OnModelCreatingPartial(modelBuilder);
