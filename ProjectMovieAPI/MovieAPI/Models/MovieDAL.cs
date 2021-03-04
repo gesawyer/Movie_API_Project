@@ -30,13 +30,29 @@ namespace MovieAPI.Models
             string json = rd.ReadToEnd();
             return json;
         }
-        public Movie SearchMovies(int Id)
+        public Movie SearchMoviesId(int Id)
         {
             string json = GetDataId(Id);
             Movie r = JsonConvert.DeserializeObject<Movie>(json);
             if (r.title == null)
             {
                 //validation here
+                return r;
+            }
+            else
+            {
+
+            }
+            return r;
+
+        }
+        public Movie SearchMoviesString(string Title)
+        {//return a list
+            string json = GetDataString(Title);
+            Movie r = JsonConvert.DeserializeObject<Movie>(json);
+            if (r.title == null)
+            {
+                
                 return r;
             }
             else

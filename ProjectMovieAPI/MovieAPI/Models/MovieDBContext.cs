@@ -17,7 +17,7 @@ namespace MovieAPI.Models
             : base(options)
         {
         }
-
+        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
