@@ -46,21 +46,12 @@ namespace MovieAPI.Models
             return r;
 
         }
-        public Movie SearchMoviesString(string Title)
+        public List<Result> SearchMoviesString(string query)
         {//return a list
-            string json = GetDataString(Title);
-            Movie r = JsonConvert.DeserializeObject<Movie>(json);
-            if (r.title == null)
-            {
-                
-                return r;
-            }
-            else
-            {
-
-            }
-            return r;
-
+            string json = GetDataString(query);
+            SearchResults r = JsonConvert.DeserializeObject<SearchResults>(json);
+            List<Result> movieResults = r.results.ToList();
+            return movieResults;
         }
     }
 }
