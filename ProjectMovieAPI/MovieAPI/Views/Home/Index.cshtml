@@ -5,4 +5,13 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <br />
+    <br />
+    
+    <form asp-action="Result" asp-controller="Movie">
+        <h2>Create some search criteria</h2>
+        <input type="text" name="title" />
+        <input class="btn1" type="submit" />
+    </form>
+
 </div>

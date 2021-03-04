@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MovieAPI.Models;
+using ProjectMovieAPI.Models;
 
-namespace MovieAPI.Controllers
+namespace ProjectMovieAPI.Controllers
 {
     public class MovieController : Controller
     {
@@ -14,9 +14,11 @@ namespace MovieAPI.Controllers
         {
             _movieContext = context;
         }
+
         public IActionResult Index()
         {
             return View();
         }
+
     }
 }
