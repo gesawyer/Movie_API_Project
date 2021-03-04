@@ -19,9 +19,9 @@ namespace MovieAPI.Controllers
         {
             _logger = logger;
         }
-        public IActionResult Search(string  )
+        public IActionResult Search(string query)
         {
-            List<Movie> movies = movieDAL.SearchMovieId();
+            List<Movie> movies = movieDAL.SearchMoviesString(query); // SearchMoviesString is WIP
             return View();
         }
         public IActionResult Index()

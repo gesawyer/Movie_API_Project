@@ -5,9 +5,6 @@ using System.Threading.Tasks;
 
 namespace MovieAPI.Models
 {
-    public class Movie2
-    {
-
         public class SearchResults
         {
             public int page { get; set; }
@@ -33,7 +30,4 @@ namespace MovieAPI.Models
             public float vote_average { get; set; }
             public int vote_count { get; set; }
         }
-
-
     }
-}
