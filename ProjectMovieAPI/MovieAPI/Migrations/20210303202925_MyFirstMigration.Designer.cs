@@ -9,7 +9,7 @@ using MovieAPI.Models;
 
 namespace MovieAPI.Migrations
 {
-    [DbContext(typeof(MovieDBContext))]
+    [DbContext(typeof(MovieAPI.Models.MovieDBContext))]
     [Migration("20210303202925_MyFirstMigration")]
     partial class MyFirstMigration
     {

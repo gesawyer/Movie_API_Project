@@ -5,7 +5,7 @@ using MovieAPI.Models;
 
 #nullable disable
 
-namespace ProjectMovieAPI.Models
+namespace MovieAPI.Models
 {
     public partial class MovieDBContext : DbContext
     {

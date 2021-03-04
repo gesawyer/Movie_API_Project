@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieAPI.Models;
-using ProjectMovieAPI.Models.MovieAPI.Models;
 
 namespace MovieAPI.Controllers
 {
