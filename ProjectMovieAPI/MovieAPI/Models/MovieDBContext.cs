@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using MovieAPI.Models;
 
 #nullable disable
 
@@ -17,8 +16,9 @@ namespace MovieAPI.Models
             : base(options)
         {
         }
-        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
+
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
@@ -31,7 +31,7 @@ namespace MovieAPI.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=MovieDB ;Trusted_Connection=True ;");
+                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=MovieDB;Trusted_Connection=True;");
             }
         }
 
@@ -138,18 +138,16 @@ namespace MovieAPI.Models
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Title).HasMaxLength(60);
+                entity.Property(e => e.MovieId).HasColumnName("MovieID");
 
                 entity.Property(e => e.UserId)
                     .HasMaxLength(450)
                     .HasColumnName("UserID");
 
-                entity.Property(e => e.Year).HasColumnType("date");
-
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Favorites)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Favorites__UserI__5CD6CB2B");
+                    .HasConstraintName("FK__Favorites__UserI__160F4887");
             });
 
             OnModelCreatingPartial(modelBuilder);
