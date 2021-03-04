@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieAPI.Models;
+using ProjectMovieAPI.Models.MovieAPI.Models;
 
 namespace MovieAPI.Controllers
 {
@@ -14,12 +15,16 @@ namespace MovieAPI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private MovieDAL movieDAL = new MovieDAL();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-
+        //public IActionResult Search(string )
+        //{
+        // List<Movie> beers = movieDAL.SearchMovie();
+        //return View();
+        //}
         public IActionResult Index()
         {
             return View();
