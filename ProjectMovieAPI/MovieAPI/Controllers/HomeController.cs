@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MovieAPI.Models;
-using ProjectMovieAPI.Models.MovieAPI.Models;
+
 
 namespace MovieAPI.Controllers
 {
@@ -20,11 +20,11 @@ namespace MovieAPI.Controllers
         {
             _logger = logger;
         }
-        //public IActionResult Search(string )
-        //{
-        // List<Movie> beers = movieDAL.SearchMovie();
-        //return View();
-        //}
+        public IActionResult Search(string  )
+        {
+            List<Movie> movies = movieDAL.SearchMovieId();
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
