@@ -13,17 +13,20 @@ namespace MovieAPI.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private MovieDAL movieDAL = new MovieDAL();
-        public HomeController(ILogger<HomeController> logger)
+        private readonly MovieDBContext _movieContext;
+        public HomeController(MovieDBContext context)
         {
-            _logger = logger;
+            _movieContext = context;
         }
-        public IActionResult Search(string query)
+
+        private MovieDAL movieDAL = new MovieDAL(); 
+        public IActionResult Result(string query)
         {
-            List<Movie> movies = movieDAL.SearchMoviesString(query); // SearchMoviesString is WIP
-            return View();
+            
+            List<Result> moviesResults = movieDAL.SearchMoviesString(query); // SearchMoviesString is WIP
+            return View(moviesResults);
         }
+
         public IActionResult Index()
         {
             return View();

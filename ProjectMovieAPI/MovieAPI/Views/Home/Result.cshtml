@@ -1,16 +1,15 @@
 ﻿@model List<Result>
-
+<html dir="rtl" lang="ar">
 <h2>Movies Found: @Model.Count</h2>
-
 @foreach (Result r in Model)
 {
     <h4>Title: @r.title </h4>
     <h4>Release Date: @r.release_date</h4>
     string url = "http://image.tmdb.org/t/p/w500/" + r.poster_path;
-    <img src="@url">
+    <img width="200px" src="@url">
 
-    @*if (!IsFavorite)
-        {
+    @*if (TempData["Favorite"] == true)
+    {
         <a>
             <button asp-action="Favorite" class="button1">Add to Favorites</button>
         </a>

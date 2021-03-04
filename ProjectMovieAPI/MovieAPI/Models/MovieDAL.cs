@@ -50,8 +50,7 @@ namespace MovieAPI.Models
         {//return a list
             string json = GetDataString(query);
             SearchResults r = JsonConvert.DeserializeObject<SearchResults>(json);
-            List<Result> movieResults = r.results.ToList();
-            return movieResults;
+            return r.results.ToList();
         }
     }
 }
