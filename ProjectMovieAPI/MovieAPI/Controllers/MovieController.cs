@@ -14,9 +14,11 @@ namespace MovieAPI.Controllers
         {
             _movieContext = context;
         }
+
         public IActionResult Index()
         {
             return View();
         }
+
     }
 }

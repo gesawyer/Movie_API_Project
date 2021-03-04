@@ -6,8 +6,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-
-
 namespace MovieAPI.Models
 {
     public class MovieDAL

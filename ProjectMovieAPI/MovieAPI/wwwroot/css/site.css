@@ -69,3 +69,25 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.btn1 {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    outline: 1px;
+    color: white;
+    background-color: darkblue;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 7px #CCCCCC;
+}
+
+    .btn1:hover {
+        background-color: Highlight
+    }
+
+    .btn1:active {
+        background-color: forestgreen;
+        box-shadow: 0 4px #666;
+        transform: translateY(5px);
+    }
