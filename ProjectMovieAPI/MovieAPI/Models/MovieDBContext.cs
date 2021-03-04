@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using MovieAPI.Models;
 
 #nullable disable
 
@@ -17,14 +18,14 @@ namespace ProjectMovieAPI.Models
         {
         }
 
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
-        public virtual DbSet<Favorite> Favorites { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
+        public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
+        public virtual DbSet<Favorites> Favorites { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,7 +40,7 @@ namespace ProjectMovieAPI.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<AspNetRole>(entity =>
+            modelBuilder.Entity<AspNetRoles>(entity =>
             {
                 entity.HasIndex(e => e.NormalizedName, "RoleNameIndex")
                     .IsUnique()
@@ -50,7 +51,7 @@ namespace ProjectMovieAPI.Models
                 entity.Property(e => e.NormalizedName).HasMaxLength(256);
             });
 
-            modelBuilder.Entity<AspNetRoleClaim>(entity =>
+            modelBuilder.Entity<AspNetRoleClaims>(entity =>
             {
                 entity.HasIndex(e => e.RoleId, "IX_AspNetRoleClaims_RoleId");
 
@@ -61,7 +62,7 @@ namespace ProjectMovieAPI.Models
                     .HasForeignKey(d => d.RoleId);
             });
 
-            modelBuilder.Entity<AspNetUser>(entity =>
+            modelBuilder.Entity<AspNetUsers>(entity =>
             {
                 entity.HasIndex(e => e.NormalizedEmail, "EmailIndex");
 
@@ -78,7 +79,7 @@ namespace ProjectMovieAPI.Models
                 entity.Property(e => e.UserName).HasMaxLength(256);
             });
 
-            modelBuilder.Entity<AspNetUserClaim>(entity =>
+            modelBuilder.Entity<AspNetUserClaims>(entity =>
             {
                 entity.HasIndex(e => e.UserId, "IX_AspNetUserClaims_UserId");
 
@@ -89,7 +90,7 @@ namespace ProjectMovieAPI.Models
                     .HasForeignKey(d => d.UserId);
             });
 
-            modelBuilder.Entity<AspNetUserLogin>(entity =>
+            modelBuilder.Entity<AspNetUserLogins>(entity =>
             {
                 entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
 
@@ -106,7 +107,7 @@ namespace ProjectMovieAPI.Models
                     .HasForeignKey(d => d.UserId);
             });
 
-            modelBuilder.Entity<AspNetUserRole>(entity =>
+            modelBuilder.Entity<AspNetUserRoles>(entity =>
             {
                 entity.HasKey(e => new { e.UserId, e.RoleId });
 
@@ -121,7 +122,7 @@ namespace ProjectMovieAPI.Models
                     .HasForeignKey(d => d.UserId);
             });
 
-            modelBuilder.Entity<AspNetUserToken>(entity =>
+            modelBuilder.Entity<AspNetUserTokens>(entity =>
             {
                 entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
 
@@ -134,7 +135,7 @@ namespace ProjectMovieAPI.Models
                     .HasForeignKey(d => d.UserId);
             });
 
-            modelBuilder.Entity<Favorite>(entity =>
+            modelBuilder.Entity<Favorites>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
