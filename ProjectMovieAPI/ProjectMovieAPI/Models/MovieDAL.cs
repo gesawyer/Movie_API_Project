@@ -1,48 +1,55 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using static ProjectMovieAPI.Models.Movie;
-using static ProjectMovieAPI.Secret;
+using Newtonsoft.Json;
 
 namespace ProjectMovieAPI.Models
 {
     public class MovieDAL
     {
-        public string GetData(string searchName)
+        public string GetDataId(int Id)
         {
-            string url = $"https://api.themoviedb.org/3/search/movie?api_key={apiKey}&query={searchName}";
-
-            HttpWebRequest request = WebRequest.CreateHttp(url);
+            string idUrl = $"https://api.themoviedb.org/3/movie/{Id}?api_key={Secret.apiKey}";
+            HttpWebRequest request = WebRequest.CreateHttp(idUrl);
             HttpWebResponse response = null;
 
             response = (HttpWebResponse)request.GetResponse();
             StreamReader rd = new StreamReader(response.GetResponseStream());
-
             string json = rd.ReadToEnd();
             return json;
-
         }
 
-        public List<Movie> SearchMovies(string name)
+        public string GetDataString(string searchName)
         {
-            string json = GetData(name);
+            string stringUrl = $"https://api.themoviedb.org/3/search/movie?api_key={Secret.apiKey}&query={searchName}";
+            HttpWebRequest request = WebRequest.CreateHttp(stringUrl);
+            HttpWebResponse response = null;
 
-            Rootobject r = JsonConvert.DeserializeObject<Rootobject>(json);
-            List<Movie> movies;
-            if (r.data == null)
+            response = (HttpWebResponse)request.GetResponse();
+            StreamReader rd = new StreamReader(response.GetResponseStream());
+            string json = rd.ReadToEnd();
+            return json;
+        }
+
+        public Movie SearchMovies(int Id) 
+        {
+            string json = GetDataId(Id);
+
+            Movie r = JsonConvert.DeserializeObject<Movie>(json);
+            if(r.title == null)
             {
-                movies = new List<Movie>();
+                //validation here
+                return r;
             }
             else
             {
-                movies = r.data.ToList();
+                
             }
-            return movies;
+            return r;
+                   
         }
     }
-
 }

@@ -14,6 +14,7 @@ namespace ProjectMovieAPI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MovieDAL movieDAL = new MovieDAL();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -24,7 +25,11 @@ namespace ProjectMovieAPI.Controllers
         {
             return View();
         }
-
+        //public IActionResult Search(string )
+        //{
+           // List<Movie> beers = movieDAL.SearchMovie();
+            //return View();
+        //}
         public IActionResult Privacy()
         {
             return View();
