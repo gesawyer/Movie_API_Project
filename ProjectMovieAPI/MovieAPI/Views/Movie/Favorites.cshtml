@@ -1,0 +1,12 @@
+﻿@model List<Movie>
+
+@foreach (Movie m in Model)
+{
+    <h2>Title: @m.Title</h2>
+    <h2>Release Date: @m.Release_Date</h2>
+    <h2>Runtime: @m.Runtime</h2>
+
+    <a>
+        <button asp-action="Favorite" class="button1">Remove from Favorites</button>
+    </a>
+}
