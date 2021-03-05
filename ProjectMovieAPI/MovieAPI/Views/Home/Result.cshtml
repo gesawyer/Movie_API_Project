@@ -1,6 +1,6 @@
-﻿@model List<Result>
-@*<html dir="rtl" lang="ar">*@
-<h2>Movies Found: @Model.Count</h2> 
+@model List<Result>
+<h2>Movies Found: @Model.Count</h2>
+
 @foreach (Result r in Model)
 {
     string url = "http://image.tmdb.org/t/p/w185/" + r.poster_path;
@@ -29,4 +29,3 @@
     <br />
     <br />
 }
-
