@@ -6,10 +6,10 @@
     string url = "http://image.tmdb.org/t/p/w185/" + r.poster_path;
     
 <div style="border: ridge 8px coral">
-    <h4>Title: @r.title </h4>
+    <h4>Title: <b>@r.title</b> </h4>
     <h4>Release Date: @r.release_date</h4>
     <form method="post">
-        <a>
+        <a class="text">
             <button asp-action="AddToFavorites" asp-route-id="@r.id" asp-route-routedQuery="@TempData["savedQuery"]" class="btn1">Add to Favorites</button>
         </a>
     </form>
