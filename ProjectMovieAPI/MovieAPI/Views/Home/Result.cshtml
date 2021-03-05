@@ -1,25 +1,32 @@
 ﻿@model List<Result>
-<html dir="rtl" lang="ar">
-<h2>Movies Found: @Model.Count</h2>
+@*<html dir="rtl" lang="ar">*@
+<h2>Movies Found: @Model.Count</h2> 
 @foreach (Result r in Model)
 {
+    string url = "http://image.tmdb.org/t/p/w185/" + r.poster_path;
+    
+<div style="border: ridge 8px coral">
     <h4>Title: @r.title </h4>
     <h4>Release Date: @r.release_date</h4>
-    string url = "http://image.tmdb.org/t/p/w500/" + r.poster_path;
-    <img width="200px" src="@url">
-
-    @*if (TempData["Favorite"] == true)
-    {
+    <form method="post">
         <a>
-            <button asp-action="Favorite" class="button1">Add to Favorites</button>
+            <button asp-action="AddToFavorites" asp-route-id="@r.id" asp-route-routedQuery="@TempData["savedQuery"]" class="btn1">Add to Favorites</button>
         </a>
-    }
-    else
-    {
-        <a>
-            <button asp-action="Favorite" class="button1">Remove from Favorites</button>
-        </a>
-    }*@
+    </form>
+    <br />
+    <br />
+    <div class="container">
+        <div class="image">
+            <img src="@url">
+            @*<img width="200px" src="@url">*@
+        </div>
+        <div class="text">
+            <p>@r.overview</p>
+        </div>
+    </div>
+</div>
 
+    <br />
+    <br />
 }
 

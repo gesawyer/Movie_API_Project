@@ -1,17 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+        <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <br />
+        <br />
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <br />
-    <br />
-    
-    <form asp-action="Result" asp-controller="Home">
-        <h2>Create some search criteria</h2>
-        <input type="text" name="query" />
-        <input class="btn1" type="submit" />
-    </form>
+        <form asp-action="Result" asp-controller="Home">
+            <h2>Create some search criteria</h2>
+            <h4>(Enter a movie name like <b>Shrek</b> or a search string like <b>s</b>)</h4>
+            <input type="text" name="query" />
+            <input class="btn1" type="submit" />
+        </form>
 
-</div>
+        </div>
