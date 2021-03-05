@@ -1,12 +1,38 @@
 ﻿@model List<Movie>
-
-@foreach (Movie m in Model)
+<h2>My Favorite Movies</h2>
+<br />
+@if(Model.Count < 1)
 {
-    <h2>Title: @m.title</h2>
-    <h2>Release Date: @m.release_date</h2>
-    <h2>Runtime: @m.runtime</h2>
+    <h4>You have nothing.</h4>
+}
+else
+{
+    foreach (Movie r in Model)
+    {
+        string url = "http://image.tmdb.org/t/p/w185/" + r.poster_path;
 
-    <a>
-        <button asp-action="RemoveFavorites" asp-route id=""class="button1">Remove from Favorites</button>
-    </a>
+        <div style="border: ridge 8px coral">
+            <h4>Title: <b>@r.title</b> </h4>
+            <h4>Release Date: @r.release_date</h4>
+            <form method="post">
+                <a class="text">
+                    <button asp-action="RemoveFavorites" asp-route-MovieId="@r.id" class="btn1">Remove Favorite</button>
+                </a>
+            </form>
+            <br />
+            <br />
+            <div class="container">
+                <div class="image">
+                    <img src="@url">
+                    @*<img width="200px" src="@url">*@
+                </div>
+                <div class="text">
+                    <p>@r.overview</p>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <br />
+    }
 }

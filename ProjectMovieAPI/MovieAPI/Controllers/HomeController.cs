@@ -105,7 +105,7 @@ namespace MovieAPI.Controllers
                 }
             }
             
-            return RedirectToAction("Index");
+            return RedirectToAction("Favorites");
         }
 
         public IActionResult Privacy()
