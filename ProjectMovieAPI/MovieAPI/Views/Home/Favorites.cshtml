@@ -14,6 +14,7 @@ else
         <div style="border: ridge 8px coral">
             <h4>Title: <b>@r.title</b> </h4>
             <h4>Release Date: @r.release_date</h4>
+            <h4>Runtime: @r.runtime minutes</h4>
             <form method="post">
                 <a class="text">
                     <button asp-action="RemoveFavorites" asp-route-MovieId="@r.id" class="btn1">Remove Favorite</button>
