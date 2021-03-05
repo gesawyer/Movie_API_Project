@@ -23,6 +23,13 @@ namespace MovieAPI.Controllers
         private MovieDAL movieDAL = new MovieDAL(); 
         public IActionResult Result(string query)
         {
+            //string toCheck = query.Trim();
+
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return RedirectToAction("Index");
+            }
+
             TempData["savedQuery"] = query;
             List<Result> moviesResults = movieDAL.SearchMoviesString(query); // SearchMoviesString is WIP
             return View(moviesResults);
