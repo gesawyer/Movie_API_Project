@@ -81,6 +81,32 @@ namespace MovieAPI.Controllers
             }
 
         }
+        [HttpPost]
+        public IActionResult RemoveFavorites(int MovieId)
+        {
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+            var userId = claim.Value;
+            var favorites = _movieContext.Favorites.Where(x => x.UserId == userId).ToList();
+
+
+            //var faveToRemove = (from favorites in x.Users
+            //            where x.MovieId == userId
+            //            select x).FirstOrDefault();
+
+            var favoriteDelete= favorites.Where(x=> x.MovieId == MovieId).ToList();
+
+            foreach(Favorites f in favoriteDelete)
+            {
+                if (ModelState.IsValid)
+                {
+                    _movieContext.Favorites.Remove(f);
+                    _movieContext.SaveChanges();
+                }
+            }
+            
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Privacy()
         {
